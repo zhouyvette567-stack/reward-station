@@ -1,40 +1,129 @@
 @import "tailwindcss";
+
+/* 导入中文字体 */
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
 
+/* 全局样式 */
 :root {
-  --cream-primary: #FFF9E8;
-  --cream-secondary: #FFF3D1;
+  --warm-cream: #FDF8F0;
+  --warm-gold: #E8C872;
+  --warm-gold-light: #F5E6C8;
+  --warm-orange: #D4A853;
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 body {
   font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
-  background: linear-gradient(135deg, #FFF9E8 0%, #FFE5DC 50%, #E6F4FA 100%);
+  background: linear-gradient(180deg, #FDF8F0 0%, #F9F0E0 50%, #F5E8D0 100%);
   min-height: 100vh;
   overflow-x: hidden;
 }
 
+/* 自定义颜色 - 暖米色/浅金色系 */
 @theme {
-  --color-cream-50: #FFFDF7; --color-cream-100: #FFF9E8; --color-cream-200: #FFF3D1; --color-cream-300: #FFEAB3; --color-cream-400: #FFE09A; --color-cream-500: #F5D68A;
-  --color-peach-100: #FFE5DC; --color-peach-200: #FFD4C4; --color-peach-300: #FFBFAA; --color-peach-400: #FFA88C;
-  --color-mint-100: #E0F5E9; --color-mint-200: #C1EBD4; --color-mint-300: #9FDDBB; --color-mint-400: #7DCBA2;
-  --color-lavender-100: #F0E6FA; --color-lavender-200: #E2D1F5; --color-lavender-300: #D1B8EE; --color-lavender-400: #BE9DE5;
-  --color-sky-100: #E6F4FA; --color-sky-200: #D1EBF5; --color-sky-300: #B8DEEE; --color-sky-400: #9DCFE5;
+  --color-warm-50: #FFFCF7;
+  --color-warm-100: #FDF8F0;
+  --color-warm-200: #F9F0E0;
+  --color-warm-300: #F5E8D0;
+  --color-warm-400: #E8D4B0;
+  --color-warm-500: #D4B896;
+  
+  --color-gold-100: #F5E6C8;
+  --color-gold-200: #E8C872;
+  --color-gold-300: #D4A853;
+  --color-gold-400: #C49A48;
+  --color-gold-500: #B08A3C;
 }
 
+/* 渐变文字 - 暖金色 */
 .gradient-text {
-  background: linear-gradient(135deg, #FFA88C 0%, #BE9DE5 50%, #7DCBA2 100%);
+  background: linear-gradient(135deg, #D4A853 0%, #E8C872 50%, #C49A48 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.1); border-radius: 3px; }
-::-webkit-scrollbar-thumb { background: rgba(255, 224, 154, 0.5); border-radius: 3px; }
-::selection { background: rgba(255, 224, 154, 0.4); color: #4a4a4a; }
+/* 暖金色渐变按钮 */
+.btn-gold-gradient {
+  background: linear-gradient(135deg, #E8C872 0%, #D4A853 100%);
+  color: #5A4A2A;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
 
+.btn-gold-gradient:hover {
+  background: linear-gradient(135deg, #D4A853 0%, #C49A48 100%);
+  box-shadow: 0 4px 15px rgba(212, 168, 83, 0.3);
+}
+
+/* 卡片样式 - 浅米色背景 */
+.card-warm {
+  background: #FFFCF7;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(180, 150, 100, 0.08);
+  border: 1px solid rgba(232, 200, 114, 0.15);
+  transition: all 0.3s ease;
+}
+
+.card-warm:hover {
+  box-shadow: 0 4px 20px rgba(180, 150, 100, 0.12);
+  transform: translateY(-2px);
+}
+
+/* 输入框样式 */
+.input-warm {
+  background: #FFFCF7;
+  border: 1px solid rgba(232, 200, 114, 0.2);
+  border-radius: 12px;
+  padding: 14px 18px;
+  font-size: 15px;
+  color: #5A4A2A;
+  transition: all 0.3s ease;
+}
+
+.input-warm::placeholder {
+  color: #A89878;
+}
+
+.input-warm:focus {
+  outline: none;
+  border-color: rgba(212, 168, 83, 0.4);
+  box-shadow: 0 0 0 3px rgba(212, 168, 83, 0.1);
+}
+
+/* 滚动条美化 */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(232, 200, 114, 0.1);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(212, 168, 83, 0.3);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(212, 168, 83, 0.5);
+}
+
+/* 选中文本样式 */
+::selection {
+  background: rgba(232, 200, 114, 0.3);
+  color: #5A4A2A;
+}
+
+/* 响应式调整 */
 @media (max-width: 640px) {
-  body { background: linear-gradient(180deg, #FFF9E8 0%, #FFE5DC 50%, #E6F4FA 100%); }
+  body {
+    background: linear-gradient(180deg, #FDF8F0 0%, #F9F0E0 100%);
+  }
 }

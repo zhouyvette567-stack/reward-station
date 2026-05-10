@@ -2,6 +2,7 @@ import './index.css';
 
 function App() {
   return (
+     <div className="page-container">  {/* 只要加这一句！！！ */}
     <div style={{
       width: '100%',
       minHeight: '100vh',

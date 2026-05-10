@@ -25,14 +25,13 @@ const EchoChamber = () => {
 
   return (
     <GlassCard className="relative overflow-hidden">
-      <div className="absolute -top-10 -right-10 w-32 h-32 bg-gradient-to-br from-lavender-200/30 to-peach-200/30 rounded-full blur-2xl" />
       <div className="relative">
-        <div className="flex items-center gap-3 mb-4"><span className="text-3xl">🦉</span><h3 className="text-xl font-medium text-gray-700">树洞回声</h3></div>
-        <p className="text-gray-500 text-sm mb-4">AI 换位思考，从不同视角重新解读你的故事</p>
+        <div className="flex items-center gap-3 mb-4"><span className="text-2xl">🦉</span><h3 className="text-lg font-medium text-[#5A4A2A]">树洞回声</h3></div>
+        <p className="text-[#A89878] text-sm mb-4">AI 换位思考，从不同视角重新解读你的故事</p>
         <div className="grid grid-cols-2 gap-2 mb-4">
           {echoRoles.map((role) => (
-            <motion.button key={role.id} whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} onClick={() => handleRoleSelect(role)} className={`p-3 rounded-xl border transition-all ${selectedRole?.id === role.id ? `bg-gradient-to-r ${role.color} border-white/40 shadow-md` : 'bg-white/20 border-white/20 hover:bg-white/30'}`}>
-              <div className="flex items-center gap-2"><span className="text-xl">{role.emoji}</span><div className="text-left"><p className="text-sm font-medium text-gray-700">{role.name}</p><p className="text-xs text-gray-400">{role.description}</p></div></div>
+            <motion.button key={role.id} whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} onClick={() => handleRoleSelect(role)} className={`p-3 rounded-xl border transition-all ${selectedRole?.id === role.id ? 'bg-[#F5E6C8] border-[#E8C872]/40 shadow-md' : 'bg-[#FDF8F0] border-[#E8C872]/20 hover:bg-[#F5E6C8]/50'}`}>
+              <div className="flex items-center gap-2"><span className="text-lg">{role.emoji}</span><div className="text-left"><p className="text-sm font-medium text-[#5A4A2A]">{role.name}</p><p className="text-xs text-[#A89878]">{role.description}</p></div></div>
             </motion.button>
           ))}
         </div>
@@ -41,10 +40,7 @@ const EchoChamber = () => {
             <GlassInput value={input} onChange={(e) => setInput(e.target.value)} placeholder="分享你的想法或困扰，让不同角色来回应你..." multiline maxLength={300} className="mb-4" />
             <GlassButton onClick={handleSubmit} disabled={!input.trim() || !selectedRole} loading={loading} variant="primary" className="w-full">{loading ? '正在聆听...' : `🔮 请${selectedRole?.name || '...'}回应`}</GlassButton>
           </motion.div>) : (<motion.div key="result" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} className="space-y-4">
-            <div className={`p-5 rounded-2xl border border-white/20 bg-gradient-to-r ${selectedRole?.color}`}>
-              <div className="flex items-center gap-2 mb-3"><span className="text-2xl">{selectedRole?.emoji}</span><span className="font-medium text-gray-700">{selectedRole?.name}</span></div>
-              <p className="text-gray-700 leading-relaxed">{response}</p>
-            </div>
+            <div className="p-5 rounded-xl border border-[#E8C872]/20 bg-[#FDF8F0]"><div className="flex items-center gap-2 mb-3"><span className="text-xl">{selectedRole?.emoji}</span><span className="font-medium text-[#5A4A2A]">{selectedRole?.name}</span></div><p className="text-[#5A4A2A] leading-relaxed">{response}</p></div>
             <div className="flex gap-3"><GlassButton onClick={handleSubmit} variant="default" size="sm" className="flex-1">🔄 再听一次</GlassButton><GlassButton onClick={handleReset} variant="success" size="sm" className="flex-1">✨ 换个话题</GlassButton></div>
           </motion.div>)}
         </AnimatePresence>
@@ -52,4 +48,5 @@ const EchoChamber = () => {
     </GlassCard>
   );
 };
+
 export default EchoChamber;

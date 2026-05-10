@@ -47,10 +47,15 @@ body {
 
 /* 页面容器 - 舒展间距 */
 .page-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
   width: 100%;
   max-width: 600px;
   margin: 0 auto;
-  padding: 40px 20px;
+  padding: 60px 20px;
   box-sizing: border-box;
 }
 
@@ -191,12 +196,12 @@ body {
   }
   
   .page-container {
-    padding: 24px 16px;
+    padding: 40px 16px;
   }
 }
 
 @media (max-width: 375px) {
   .page-container {
-    padding: 20px 12px;
+    padding: 32px 12px;
   }
 }

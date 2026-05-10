@@ -31,32 +31,32 @@ function App() {
 
   return (
     <div className="page-container">
-      {/* 顶部区域 - 标题 + 时间 */}
-      <motion.header
+      {/* 顶部区域 - 标题居中 + 时间 */}
+      <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="flex justify-between items-center mb-6"
+        className="text-center mb-10"
       >
-        <div className="flex items-center gap-2">
+        <div className="flex justify-center items-center gap-2 mb-4">
           <i className="fa-solid fa-gift text-xl icon-gold"></i>
           <i className="fa-solid fa-fire text-lg icon-gold"></i>
           <h1 className="text-2xl font-semibold gradient-text ml-1">今日嘉奖</h1>
         </div>
         <span className="text-sm text-[#8B7355]">{currentTime}</span>
-      </motion.header>
+      </motion.div>
 
-      {/* Slogan */}
+      {/* Slogan - 居中，与标题间距 40px */}
       <motion.p
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.1 }}
-        className="text-center text-[#8B7355] mb-10 text-base leading-relaxed"
+        className="text-center text-[#8B7355] mb-[60px] text-base leading-relaxed"
       >
         即使只是一小步，也值得庆贺
       </motion.p>
 
-      {/* 功能卡片区域 - 三栏布局 */}
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 mb-8">
+      {/* 功能卡片区域 - 三栏布局，间距 24px */}
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-[60px] w-full">
         {/* AI 夸夸生成器 */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -123,7 +123,7 @@ function App() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="mb-8"
+            className="mb-[60px] w-full"
           >
             <PraiseGenerator />
           </motion.div>
@@ -135,7 +135,7 @@ function App() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="mb-8"
+            className="mb-[60px] w-full"
           >
             <BlindBox />
           </motion.div>
@@ -147,7 +147,7 @@ function App() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="mb-8"
+            className="mb-[60px] w-full"
           >
             <AchievementMuseum />
           </motion.div>
@@ -159,17 +159,17 @@ function App() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.45 }}
-        className="mb-8"
+        className="mt-[80px] w-full"
       >
         <EchoChamber />
       </motion.div>
 
-      {/* 页脚 */}
+      {/* 页脚 - 与树洞回声间距 80px */}
       <motion.footer
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.55 }}
-        className="footer-center text-sm text-[#A69076] pt-10 pb-4"
+        className="footer-center text-sm text-[#A69076] mt-[80px] pb-8"
       >
         <p>© 2026 今日嘉奖</p>
         <p>关于 · 分享</p>

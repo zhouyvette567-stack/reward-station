@@ -30,6 +30,8 @@ body {
   background: linear-gradient(180deg, #FDF8F3 0%, #F8F2EA 50%, #F5EDE4 100%);
   min-height: 100vh;
   color: #5A4A3A;
+  font-size: 15px;
+  line-height: 1.6;
 }
 
 /* #root 强制居中容器 */
@@ -43,12 +45,12 @@ body {
   padding: 0;
 }
 
-/* 页面容器 - 居中 */
+/* 页面容器 - 舒展间距 */
 .page-container {
   width: 100%;
   max-width: 600px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 40px 20px;
   box-sizing: border-box;
 }
 
@@ -84,23 +86,23 @@ body {
   box-shadow: 0 4px 15px rgba(212, 165, 116, 0.3);
 }
 
-/* 卡片样式 - 浅米色背景 */
+/* 卡片样式 - 干净柔和 */
 .card-warm {
   background: #FFFBF7;
   border-radius: 16px;
-  box-shadow: 0 2px 12px rgba(139, 115, 85, 0.06);
-  border: 1px solid rgba(212, 165, 116, 0.1);
+  box-shadow: 0 1px 8px rgba(139, 115, 85, 0.04);
+  border: none;
   transition: all 0.3s ease;
 }
 
 .card-warm:hover {
-  box-shadow: 0 4px 20px rgba(139, 115, 85, 0.1);
+  box-shadow: 0 2px 16px rgba(139, 115, 85, 0.08);
 }
 
 /* 输入框样式 */
 .input-warm {
   background: #FFFBF7;
-  border: 1px solid rgba(212, 165, 116, 0.15);
+  border: 1px solid rgba(212, 165, 116, 0.12);
   border-radius: 12px;
   padding: 14px 18px;
   font-size: 15px;
@@ -108,6 +110,7 @@ body {
   font-family: 'Noto Serif SC', serif;
   transition: all 0.3s ease;
   width: 100%;
+  line-height: 1.6;
 }
 
 .input-warm::placeholder {
@@ -116,8 +119,8 @@ body {
 
 .input-warm:focus {
   outline: none;
-  border-color: rgba(212, 165, 116, 0.3);
-  box-shadow: 0 0 0 3px rgba(212, 165, 116, 0.08);
+  border-color: rgba(212, 165, 116, 0.25);
+  box-shadow: 0 0 0 3px rgba(212, 165, 116, 0.06);
 }
 
 /* 标签按钮 */
@@ -184,31 +187,16 @@ body {
   
   .input-warm {
     padding: 12px 14px;
-    font-size: 16px; /* 防止 iOS 缩放 */
+    font-size: 16px;
   }
   
   .page-container {
-    padding: 16px;
+    padding: 24px 16px;
   }
 }
 
-/* 小屏幕手机 */
 @media (max-width: 375px) {
-  .card-warm {
-    padding: 1rem;
-  }
-}
-
-/* 平板 */
-@media (min-width: 641px) and (max-width: 1024px) {
-  .card-warm {
-    border-radius: 14px;
-  }
-}
-
-/* 大屏幕 */
-@media (min-width: 1280px) {
-  .card-warm {
-    border-radius: 18px;
+  .page-container {
+    padding: 20px 12px;
   }
 }

@@ -1,179 +1,131 @@
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import PraiseGenerator from './components/PraiseGenerator';
-import BlindBox from './components/BlindBox';
-import EchoChamber from './components/EchoChamber';
-import AchievementMuseum from './components/AchievementMuseum';
-import { praiseStyles } from './data/content';
+import './index.css';
 
 function App() {
-  const [activeSection, setActiveSection] = useState(null);
-  const [currentTime, setCurrentTime] = useState('');
-
-  useEffect(() => {
-    updateTime();
-    const timer = setInterval(updateTime, 60000);
-    return () => clearInterval(timer);
-  }, []);
-
-  const updateTime = () => {
-    const now = new Date();
-    const hours = now.getHours();
-    const minutes = now.getMinutes().toString().padStart(2, '0');
-    const ampm = hours >= 12 ? 'PM' : 'AM';
-    const displayHours = hours % 12 || 12;
-    setCurrentTime(`${displayHours}:${minutes} ${ampm}`);
-  };
-
-  const toggleSection = (section) => {
-    setActiveSection(activeSection === section ? null : section);
-  };
-
   return (
-    <div className="page-container">
-      {/* 顶部区域 - 标题居中 + 时间 */}
-      <motion.div
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="text-center mb-10"
-      >
-        <div className="flex justify-center items-center gap-2 mb-4">
-          <i className="fa-solid fa-gift text-xl icon-gold"></i>
-          <i className="fa-solid fa-fire text-lg icon-gold"></i>
-          <h1 className="text-2xl font-semibold gradient-text ml-1">今日嘉奖</h1>
-        </div>
-        <span className="text-sm text-[#8B7355]">{currentTime}</span>
-      </motion.div>
-
-      {/* Slogan - 居中，与标题间距 40px */}
-      <motion.p
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.1 }}
-        className="text-center text-[#8B7355] mb-[60px] text-base leading-relaxed"
-      >
-        即使只是一小步，也值得庆贺
-      </motion.p>
-
-      {/* 功能卡片区域 - 三栏布局，间距 24px */}
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-[60px] w-full">
-        {/* AI 夸夸生成器 */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.15 }}
-          className="w-full"
-        >
-          <motion.button
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            onClick={() => toggleSection('praise')}
-            className="card-warm w-full p-5 text-center"
-          >
-            <i className="fa-solid fa-comment-dots text-2xl icon-gold mb-3 block"></i>
-            <h3 className="font-semibold text-[#5A4A3A] mb-1 text-base">AI 夸夸生成器</h3>
-            <p className="text-sm text-[#A69076] leading-relaxed">优雅书生风</p>
-          </motion.button>
-        </motion.div>
-
-        {/* 心情盲盒 */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.25 }}
-          className="w-full"
-        >
-          <motion.button
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            onClick={() => toggleSection('blindbox')}
-            className="card-warm w-full p-5 text-center"
-          >
-            <i className="fa-solid fa-box-open text-2xl icon-gold mb-3 block"></i>
-            <h3 className="font-semibold text-[#5A4A3A] mb-1 text-base">心情盲盒</h3>
-            <p className="text-sm text-[#A69076] leading-relaxed">随机生活小任务</p>
-          </motion.button>
-        </motion.div>
-
-        {/* 成就博物馆 */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.35 }}
-          className="w-full"
-        >
-          <motion.button
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            onClick={() => toggleSection('achievement')}
-            className="card-warm w-full p-5 text-center"
-          >
-            <i className="fa-solid fa-trophy text-2xl icon-gold mb-3 block"></i>
-            <h3 className="font-semibold text-[#5A4A3A] mb-1 text-base">成就博物馆</h3>
-            <p className="text-sm text-[#A69076] leading-relaxed">点亮你的高光时刻</p>
-          </motion.button>
-        </motion.div>
+    <div style={{
+      width: '100%',
+      minHeight: '100vh',
+      backgroundColor: '#f8f2e9',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      padding: '60px 20px',
+      boxSizing: 'border-box',
+      fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
+    }}>
+      {/* 1. 标题区域 */}
+      <div style={{
+        marginBottom: '40px',
+        textAlign: 'center'
+      }}>
+        <h1 style={{
+          color: '#8b7355',
+          fontSize: '24px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          gap: '8px'
+        }}>
+          🎁🔥 今日嘉奖
+        </h1>
       </div>
 
-      {/* 展开的功能区域 */}
-      <AnimatePresence mode="wait">
-        {activeSection === 'praise' && (
-          <motion.div
-            key="praise"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="mb-[60px] w-full"
-          >
-            <PraiseGenerator />
-          </motion.div>
-        )}
+      {/* 2. Slogan */}
+      <p style={{
+        marginBottom: '60px',
+        color: '#8b7355',
+        fontSize: '16px',
+        textAlign: 'center'
+      }}>
+        即使只是一小步，也值得庆贺
+      </p>
 
-        {activeSection === 'blindbox' && (
-          <motion.div
-            key="blindbox"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="mb-[60px] w-full"
-          >
-            <BlindBox />
-          </motion.div>
-        )}
+      {/* 3. 三栏卡片 */}
+      <div style={{
+        display: 'flex',
+        gap: '24px',
+        marginBottom: '60px',
+        width: '100%',
+        maxWidth: '600px'
+      }}>
+        <div style={{
+          flex: 1,
+          padding: '20px',
+          backgroundColor: '#fff9f0',
+          borderRadius: '12px',
+          boxShadow: '0 2px 8px rgba(0,0,0,0.05)',
+          textAlign: 'center'
+        }}>
+          <h3 style={{ color: '#8b7355', marginBottom: '8px' }}>AI夸夸生成器</h3>
+          <p style={{ color: '#a0896b', fontSize: '14px' }}>优雅书生风</p>
+        </div>
+        <div style={{
+          flex: 1,
+          padding: '20px',
+          backgroundColor: '#fff9f0',
+          borderRadius: '12px',
+          boxShadow: '0 2px 8px rgba(0,0,0,0.05)',
+          textAlign: 'center'
+        }}>
+          <h3 style={{ color: '#8b7355', marginBottom: '8px' }}>心情盲盒</h3>
+          <p style={{ color: '#a0896b', fontSize: '14px' }}>随机生活小任务</p>
+        </div>
+        <div style={{
+          flex: 1,
+          padding: '20px',
+          backgroundColor: '#fff9f0',
+          borderRadius: '12px',
+          boxShadow: '0 2px 8px rgba(0,0,0,0.05)',
+          textAlign: 'center'
+        }}>
+          <h3 style={{ color: '#8b7355', marginBottom: '8px' }}>成就博物馆</h3>
+          <p style={{ color: '#a0896b', fontSize: '14px' }}>点亮你的高光时刻</p>
+        </div>
+      </div>
 
-        {activeSection === 'achievement' && (
-          <motion.div
-            key="achievement"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="mb-[60px] w-full"
-          >
-            <AchievementMuseum />
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {/* 4. 树洞回声模块 */}
+      <div style={{
+        width: '100%',
+        maxWidth: '600px',
+        backgroundColor: '#fff9f0',
+        borderRadius: '12px',
+        padding: '20px',
+        marginBottom: '80px'
+      }}>
+        <h3 style={{ color: '#8b7355', marginBottom: '8px' }}>🗣️ 树洞回声</h3>
+        <p style={{ color: '#a0896b', fontSize: '14px', marginBottom: '16px' }}>
+          AI换位思考，从不同视角重新解读你的故事
+        </p>
+        {/* 这里保留你现有的视角按钮，不会影响居中 */}
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
+          <div style={{ padding: '12px', backgroundColor: '#fff5eb', borderRadius: '8px' }}>
+            <span>十年后的你</span>
+            <p style={{ fontSize: '12px', color: '#a0896b' }}>以未来视角回望现在</p>
+          </div>
+          <div style={{ padding: '12px', backgroundColor: '#fff5eb', borderRadius: '8px' }}>
+            <span>你的猫咪</span>
+            <p style={{ fontSize: '12px', color: '#a0896b' }}>以宠物的视角看世界</p>
+          </div>
+          <div style={{ padding: '12px', backgroundColor: '#fff5eb', borderRadius: '8px' }}>
+            <span>童年的你</span>
+            <p style={{ fontSize: '12px', color: '#a0896b' }}>以纯真的眼光看成长</p>
+          </div>
+          <div style={{ padding: '12px', backgroundColor: '#fff5eb', borderRadius: '8px' }}>
+            <span>一棵老树</span>
+            <p style={{ fontSize: '12px', color: '#a0896b' }}>以自然的智慧给予力量</p>
+          </div>
+        </div>
+      </div>
 
-      {/* 树洞回声 */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.45 }}
-        className="mt-[80px] w-full"
-      >
-        <EchoChamber />
-      </motion.div>
-
-      {/* 页脚 - 与树洞回声间距 80px */}
-      <motion.footer
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.55 }}
-        className="footer-center text-sm text-[#A69076] mt-[80px] pb-8"
-      >
-        <p>© 2026 今日嘉奖</p>
-        <p>关于 · 分享</p>
-      </motion.footer>
+      {/* 5. 页脚 */}
+      <div style={{
+        marginTop: 'auto',
+        textAlign: 'center',
+        color: '#a0896b',
+        fontSize: '14px'
+      }}>
+        <p>© 2026 今日嘉奖 &nbsp;|&nbsp; 关于 · 分享</p>
+      </div>
     </div>
   );
 }

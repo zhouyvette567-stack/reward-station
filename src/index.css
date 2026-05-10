@@ -16,8 +16,12 @@
   box-sizing: border-box;
 }
 
+/* 强制居中 - 清除默认样式 */
 html, body {
   width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
   min-height: 100vh;
 }
 
@@ -25,13 +29,27 @@ body {
   font-family: 'Noto Serif SC', 'Songti SC', 'SimSun', serif;
   background: linear-gradient(180deg, #FDF8F3 0%, #F8F2EA 50%, #F5EDE4 100%);
   min-height: 100vh;
-  overflow-x: hidden;
   color: #5A4A3A;
 }
 
+/* #root 强制居中容器 */
 #root {
-  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   min-height: 100vh;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* 页面容器 - 居中 */
+.page-container {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 /* 自定义颜色 */
@@ -119,6 +137,16 @@ body {
   color: #D4A574;
 }
 
+/* 页脚居中 */
+.footer-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  gap: 24px;
+}
+
 /* 滚动条美化 */
 ::-webkit-scrollbar {
   width: 6px;
@@ -157,6 +185,10 @@ body {
   .input-warm {
     padding: 12px 14px;
     font-size: 16px; /* 防止 iOS 缩放 */
+  }
+  
+  .page-container {
+    padding: 16px;
   }
 }
 

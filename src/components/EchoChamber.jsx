@@ -9,11 +9,14 @@ const EchoChamber = () => {
   const [response, setResponse] = useState('');
   const [loading, setLoading] = useState(false);
   const [showResult, setShowResult] = useState(false);
+  const [showInput, setShowInput] = useState(false); // 控制输入框显示
 
   const handleRoleSelect = (role) => {
     setSelectedRole(role);
     setShowResult(false);
     setResponse('');
+    setInput('');
+    setShowInput(true); // 点击视角后显示输入框
   };
 
   const handleSubmit = async () => {
@@ -38,6 +41,8 @@ const EchoChamber = () => {
     setInput('');
     setResponse('');
     setShowResult(false);
+    setShowInput(false); // 重置时隐藏输入框
+    setSelectedRole(null);
   };
 
   return (
@@ -52,6 +57,7 @@ const EchoChamber = () => {
           AI 换位思考，从不同视角重新解读你的故事
         </p>
 
+        {/* 视角选择按钮 */}
         <div className="grid grid-cols-2 gap-2 mb-4">
           {echoRoles.map((role) => (
             <motion.button
@@ -76,32 +82,41 @@ const EchoChamber = () => {
           ))}
         </div>
 
+        {/* 点击视角后才显示输入框 */}
         <AnimatePresence mode="wait">
-          {!showResult ? (
+          {showInput && !showResult && selectedRole && (
             <motion.div
               key="input"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.3 }}
             >
+              <div className="mb-3 text-sm text-[#5A4A3A]">
+                <span className="text-lg mr-2">{selectedRole.emoji}</span>
+                请向{selectedRole.name}倾诉你的想法...
+              </div>
               <textarea
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
-                placeholder="分享你的想法或困扰，让不同角色来回应你..."
+                placeholder="分享你的想法或困扰..."
                 className="input-warm w-full resize-none mb-4"
                 rows={3}
                 maxLength={300}
+                autoFocus
               />
               
               <button
                 onClick={handleSubmit}
-                disabled={!input.trim() || !selectedRole}
+                disabled={!input.trim()}
                 className="btn-gold-gradient w-full py-3 rounded-full text-center disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {loading ? '正在聆听...' : `🔮 请${selectedRole?.name || '...'}回应`}
+                {loading ? '正在聆听...' : `🔮 请${selectedRole.name}回应`}
               </button>
             </motion.div>
-          ) : (
+          )}
+
+          {showResult && (
             <motion.div
               key="result"
               initial={{ opacity: 0, y: 20 }}

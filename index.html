@@ -1,19 +1,117 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="zh-CN">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/reward-station/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>今日嘉奖</title>
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-    <!-- Google Fonts - 衬线字体 -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="./src/main.jsx"></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>今日嘉奖</title>
+  <style>
+    /* 全局重置，解决浏览器默认样式问题 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      width: 100%;
+      min-height: 100vh;
+      background-color: #f8f2e9;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    /* 核心：强制页面居中+撑开高度 */
+    .page-container {
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 60px 20px; /* 上下60px，左右20px，避免贴边 */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* 标题和slogan居中+拉开间距 */
+    .title-section {
+      margin-bottom: 40px;
+      text-align: center;
+    }
+
+    .slogan {
+      margin-bottom: 60px;
+      color: #8b7355;
+      font-size: 16px;
+    }
+
+    /* 三栏卡片：等宽+间距 */
+    .card-grid {
+      display: flex;
+      gap: 24px; /* 卡片之间的间距 */
+      margin-bottom: 60px; /* 卡片和树洞的间距 */
+      width: 100%;
+    }
+
+    .card {
+      flex: 1;
+      padding: 20px; /* 卡片内边距，避免内容挤边 */
+      background: #fff9f0;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      text-align: center;
+    }
+
+    /* 树洞回声模块 */
+    .treehole-section {
+      width: 100%;
+      background: #fff9f0;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 80px; /* 树洞和页脚的间距 */
+    }
+
+    /* 页脚 */
+    .footer {
+      text-align: center;
+      color: #8b7355;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="page-container">
+    <!-- 1. 标题和slogan，居中 -->
+    <div class="title-section">
+      <h1>🎁🔥 今日嘉奖</h1>
+    </div>
+    <p class="slogan">即使只是一小步，也值得庆贺</p>
+
+    <!-- 2. 三栏卡片 -->
+    <div class="card-grid">
+      <div class="card">
+        <h3>AI夸夸生成器</h3>
+        <p>优雅书生风</p>
+      </div>
+      <div class="card">
+        <h3>心情盲盒</h3>
+        <p>随机生活小任务</p>
+      </div>
+      <div class="card">
+        <h3>成就博物馆</h3>
+        <p>点亮你的高光时刻</p>
+      </div>
+    </div>
+
+    <!-- 3. 树洞回声模块 -->
+    <div class="treehole-section">
+      <h3>🗣️ 树洞回声</h3>
+      <p>AI换位思考，从不同视角重新解读你的故事</p>
+      <!-- 这里放你的视角按钮，不会影响居中效果 -->
+    </div>
+
+    <!-- 4. 页脚 -->
+    <div class="footer">
+      <p>© 2026 今日嘉奖 | 关于 · 分享</p>
+    </div>
+  </div>
+</body>
 </html>

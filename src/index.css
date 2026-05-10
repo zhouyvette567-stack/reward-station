@@ -1,0 +1,40 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+:root {
+  --cream-primary: #FFF9E8;
+  --cream-secondary: #FFF3D1;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  background: linear-gradient(135deg, #FFF9E8 0%, #FFE5DC 50%, #E6F4FA 100%);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+@theme {
+  --color-cream-50: #FFFDF7; --color-cream-100: #FFF9E8; --color-cream-200: #FFF3D1; --color-cream-300: #FFEAB3; --color-cream-400: #FFE09A; --color-cream-500: #F5D68A;
+  --color-peach-100: #FFE5DC; --color-peach-200: #FFD4C4; --color-peach-300: #FFBFAA; --color-peach-400: #FFA88C;
+  --color-mint-100: #E0F5E9; --color-mint-200: #C1EBD4; --color-mint-300: #9FDDBB; --color-mint-400: #7DCBA2;
+  --color-lavender-100: #F0E6FA; --color-lavender-200: #E2D1F5; --color-lavender-300: #D1B8EE; --color-lavender-400: #BE9DE5;
+  --color-sky-100: #E6F4FA; --color-sky-200: #D1EBF5; --color-sky-300: #B8DEEE; --color-sky-400: #9DCFE5;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #FFA88C 0%, #BE9DE5 50%, #7DCBA2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.1); border-radius: 3px; }
+::-webkit-scrollbar-thumb { background: rgba(255, 224, 154, 0.5); border-radius: 3px; }
+::selection { background: rgba(255, 224, 154, 0.4); color: #4a4a4a; }
+
+@media (max-width: 640px) {
+  body { background: linear-gradient(180deg, #FFF9E8 0%, #FFE5DC 50%, #E6F4FA 100%); }
+}

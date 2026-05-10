@@ -16,12 +16,22 @@
   box-sizing: border-box;
 }
 
+html, body {
+  width: 100%;
+  min-height: 100vh;
+}
+
 body {
   font-family: 'Noto Serif SC', 'Songti SC', 'SimSun', serif;
   background: linear-gradient(180deg, #FDF8F3 0%, #F8F2EA 50%, #F5EDE4 100%);
   min-height: 100vh;
   overflow-x: hidden;
   color: #5A4A3A;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
 }
 
 /* 自定义颜色 */
@@ -79,6 +89,7 @@ body {
   color: #5A4A3A;
   font-family: 'Noto Serif SC', serif;
   transition: all 0.3s ease;
+  width: 100%;
 }
 
 .input-warm::placeholder {
@@ -133,9 +144,39 @@ body {
   color: #5A4A3A;
 }
 
-/* 响应式调整 */
+/* 响应式调整 - 移动端优化 */
 @media (max-width: 640px) {
   body {
     background: linear-gradient(180deg, #FDF8F3 0%, #F8F2EA 100%);
+  }
+  
+  .card-warm {
+    border-radius: 12px;
+  }
+  
+  .input-warm {
+    padding: 12px 14px;
+    font-size: 16px; /* 防止 iOS 缩放 */
+  }
+}
+
+/* 小屏幕手机 */
+@media (max-width: 375px) {
+  .card-warm {
+    padding: 1rem;
+  }
+}
+
+/* 平板 */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .card-warm {
+    border-radius: 14px;
+  }
+}
+
+/* 大屏幕 */
+@media (min-width: 1280px) {
+  .card-warm {
+    border-radius: 18px;
   }
 }

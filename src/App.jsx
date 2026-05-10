@@ -44,8 +44,8 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen py-8 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-2xl mx-auto">
+    <div className="min-h-screen w-full flex justify-center items-start py-8 px-4 sm:px-6 lg:px-8">
+      <div className="w-full max-w-2xl">
         {/* 顶部区域 */}
         <motion.header
           initial={{ opacity: 0, y: -20 }}
@@ -114,13 +114,14 @@ function App() {
           </div>
         </motion.div>
 
-        {/* 功能卡片区域 - 三栏布局 */}
+        {/* 功能卡片区域 - 响应式三栏布局 */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10">
           {/* AI 夸夸生成器 */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
+            className="w-full"
           >
             <motion.button
               whileHover={{ scale: 1.02 }}
@@ -146,6 +147,7 @@ function App() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
+            className="w-full"
           >
             <motion.button
               whileHover={{ scale: 1.02 }}
@@ -168,6 +170,7 @@ function App() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
+            className="w-full"
           >
             <motion.button
               whileHover={{ scale: 1.02 }}
